@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUGGESTIONS</title>
+    <style>
+        .main{
+            background-color: cornflowerblue;
+        }
+        #inp{
+            height: 40px;
+            width: 30%; 
+            margin-left: 35%;
+        }
+        .ul{
+            text-align: center;
+            list-style: none;
+            font-size: 22px;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <input type="text" id="inp">
+        <ul class="ul"></ul>
+    </div>
+    <script>
+        let inp = document.querySelector("#inp")
+        let ul = document.querySelector(".ul")
+
+        let array = [
+            "red",
+            "orange",
+            "pink",
+            "green",
+            "blue",
+            "yellow",
+            "black",
+            "purple",
+            "black",
+            "brown"
+        ]
+        inp.addEventListener("input", function(){
+            let inputvalue = inp.value.toLowerCase()
+            let filtered = array.filter(ele=>
+                ele.toLowerCase().includes(inputvalue)
+                )
+                console.log(filtered);
+                ul.innerHTML = ""
+            filtered.forEach(ele=>{
+                let li = document.createElement("li")
+                li.innerHTML = ele
+                li.addEventListener("click",()=>{
+                    inp.value = ele
+                    ul.innerHTML = ""
+                })
+                ul.appendChild(li)
+            })
+        })
+    </script>
+    
+</body>
+</html>

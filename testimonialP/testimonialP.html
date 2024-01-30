@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TESTIMONIAL P</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .main {
+            height: 100vh;
+            width: 100%;
+            background-color: rgb(253, 144, 162);
+        }
+
+        .box {
+            height: max-content;
+            width: 65%;
+            padding: 30px;
+            background-color: rgb(0, 217, 255);
+            margin: auto;
+        }
+
+        .text,
+        .text1 {
+            color: rgb(44, 44, 44);
+            font-size: 16px;
+            letter-spacing: 3px;
+            line-height: 30px;
+        }
+        .text1{
+            font-weight: 800;
+        }
+
+        .sub-box {
+            width: 50%;
+            margin: auto;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .image1 {
+            height: 70px;
+            width: 100px;
+            background-image: url(./Flag-South-Korea.webp);
+            background-position: center;
+            background-size: cover;
+        }
+
+        .content-div {
+            color: white;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <div class="box">
+            <p class="text">South Korea officially the Republic of Korea (ROK), is a country in East Asia. It
+                constitutes the southern part of the Korean Peninsula and borders North Korea along the Korean
+                Demilitarized Zone. The country's western border is formed by the Yellow Sea, while its eastern border
+                is defined by the Sea of Japan. South Korea claims to be the sole legitimate government of the entire
+                peninsula and adjacent islands. It has a population of 51.96 million, of which roughly half live in the
+                Seoul Capital Area, the fourth most populous metropolitan area in the world. Other major cities include
+                Incheon, Busan, and Daegu.</p>
+            <div class="sub-box">
+                <div class="img-div">
+                    <img src="./Flag-South-Korea.webp" class="image1" alt="flages" />
+                </div>
+                <div class="content-div">
+                    <p class="text1">South Korea</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        let text = document.querySelector(".text")
+        let image1 = document.querySelector(".image1")
+        let text1 = document.querySelector(".text1")
+
+        let objdata = [
+            {
+                txt: "South Korea officially the Republic of Korea (ROK), is a country in East Asia. It constitutes the southern part of the Korean Peninsula and borders North Korea along the Korean Demilitarized Zone. The country's western border is formed by the Yellow Sea, while its eastern border is defined by the Sea of Japan. South Korea claims to be the sole legitimate government of the entire peninsula and adjacent islands. It has a population of 51.96 million, of which roughly half live in the Seoul Capital Area, the fourth most populous metropolitan area in the world. Other major cities include Incheon, Busan, and Daegu.",
+                photo: "Flag-South-Korea.webp",
+                txt1: "South Korea",
+
+            },
+            {
+                txt: "Japan (Japan is an island country in East Asia. It is situated in the northwest Pacific Ocean and is bordered on the west by the Sea of Japan, extending from the Sea of Okhotsk in the north toward the East China Sea, Philippine Sea, and Taiwan in the south. Japan is a part of the Ring of Fire, and spans an archipelago of 14,125 islands, with the five main islands being Hokkaido, Honshu , Shikoku, Kyushu, and Okinawa. Tokyo is the nation's capital and largest city, followed by Yokohama, Osaka, Nagoya, Sapporo, Fukuoka, Kobe, and Kyoto.",
+                photo: "Flag_of_Japan.svg.png",
+                txt1: "Japan",
+
+            },
+            {
+                txt: "Malays are an Austronesian ethnic group native to eastern Sumatra, the Malay Peninsula and coastal Borneo, as well as the smaller islands that lie between these locations. These locations are today part of the countries of Malaysia, Indonesia (eastern and southern Sumatra, Bangka Belitung Islands, West Kalimantan and Riau Islands), southern part of Thailand (Pattani, Satun, Songkhla, Yala and Narathiwat), Singapore and Brunei Darussalam.",
+                photo: "Flag_of_Malaysia.svg.png",
+                txt1: "Malaysia",
+            },
+            {
+                txt: "Pakistan officially the Islamic Republic of Pakistan , is a country in South Asia. It is the world's fifth-most populous country, with a population of 241.5 million people, and has the world's largest Muslim population as of year 2023.[10] Islamabad is the nation's capital, while Karachi is its largest city and financial centre, followed by Lahore and Faisalabad. Pakistan is the 33rd-largest country in the world by area and the second-largest in South Asia, spanning 881,913 square kilometres (340,509 square miles). It has a 1,046-kilometre (650-mile) coastline along the Arabian Sea and Gulf of Oman in the south, and is bordered by India to the east, Afghanistan to the west, Iran to the southwest, and China to the northeast. It is separated narrowly from Tajikistan by Afghanistan's Wakhan Corridor in the north, and also shares a maritime border with Oman.",
+                photo: "flag-symbolism-Pakistan-design-Islamic.webp",
+                txt1: "Pakistan",
+            }
+
+
+        ]
+        let currentobject = 0
+        setInterval(changedata, 2000)
+        function changedata() {
+            currentobject++
+            if (currentobject > objdata.length - 1) {
+                currentobject = 0
+            }
+            let { txt, photo, txt1 } = objdata[currentobject]
+            text.innerHTML = txt
+            image1.src = photo
+            text1.innerHTML = txt1
+        }
+    </script>
+
+</body>
+
+</html>

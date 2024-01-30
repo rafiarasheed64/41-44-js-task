@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weekly budget</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .main {
+            height: 100vh;
+            width: 100%;
+            background-color: rgb(238, 243, 241);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box1 {
+            height: max-content;
+            width: 700px;
+            border: 2px solid #ec0c0c;
+            padding: 30px;
+        }
+
+        .bx1 {
+            height: 60px;
+            width: 100%;
+            /* border: 2px solid #09a123; */
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            /* display: ; */
+        }
+
+        .input {
+            width: 70%;
+            margin-top: 1;
+            text-align: center;
+        }
+
+        .button {
+            width: 20%;
+            background-color: #818080;
+            color: white;
+        }
+
+        .box2 {
+            height: max-content;
+            width: 47%;
+            margin-top: 20px;
+            display: inline-block;
+            /* border: 2px solid #000; */
+        }
+
+        .text {
+            font-weight: 800;
+            margin-top: 20px;
+        }
+
+        p {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        .input1,
+        .input2 {
+            width: 100%;
+            height: 40px;
+            cursor: not-allowed;
+        }
+
+        .button1 {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+        .box3 {
+            height: max-content;
+            width: 47%;
+            display: inline-block;
+            margin-top: 20px;
+            /* border: 2px solid #000; */
+            vertical-align: top;
+            margin-left: 30px;
+        }
+
+        .heading1 {
+            background-color: #98fca9;
+            padding: 5px;
+        }
+
+        .heading2 {
+            margin-top: 30px;
+            background-color: #8e7bf9;
+            padding: 5px;
+
+        }
+
+        .list {
+            height: max-content;
+            margin-top: 30px;
+            /* border: 1px solid #3109d3; */
+        }
+
+        .add {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            height: 40px;
+            padding: 10px;
+            border: 1px solid #818080;
+        }
+
+        .add1 {
+            width: 80%;
+            font-size: 20px;
+        }
+
+        .add2 {
+            padding: 7px 20px;
+            border-radius: 10px;
+            background-color: grey;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1>MY WEEKLY BUDGET</h1>
+        <div class="box1">
+            <div class="bx1">
+                <input class="input" id="input" type="number" placeholder="Enter Weekly Budget Amount">
+                <button class="button">Enter</button>
+            </div>
+            <div class="box2">
+                <p class="text">Add your daily expenses</p>
+                <p>Name</p>
+                <input class="input1" id="input1" type="text" disabled>
+                <p>Amount</p>
+                <input class="input2" type="number" id="input2" disabled>
+                <button class="button1">Add</button>
+                <p class="text1"></p>
+            </div>
+            <div class="box3">
+                <h2 class="heading1">Budget: <span class="budget"></span></h2>
+                <h2 class="heading2">Left: <span class="left"></span></h2>
+                <p class="text">My Expenses:</p>
+                <ul class="list"></ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        bx1 = document.querySelector(".bx1");
+        input = document.querySelector(".input");
+        button = document.querySelector(".button");
+        budget = document.querySelector(".budget");
+        left = document.querySelector(".left");
+        list = document.querySelector(".list");
+        input1 = document.querySelector(".input1");
+        input2 = document.querySelector(".input2");
+        button1 = document.querySelector(".button1");
+        text1 = document.querySelector(".text1")
+        document.addEventListener("DOMContentLoaded", () => {
+            input.focus()
+        })
+        button.addEventListener("click", () => {
+
+            if(  input.value != ""  ){
+
+                bx1.style.display = "None"
+                budget.innerHTML = input.value
+                left.innerHTML = Number(input.value)
+                input1.focus()
+                input1.disabled = false
+                input1.style.cursor = "text"
+                input2.disabled = false
+                input2.style.cursor = "text"
+            }
+            else{
+                alert("First Enter Weekly Budget Value")
+            }
+        })
+        button1.addEventListener("click", () => {
+            let li = document.createElement("li")
+            list.appendChild(li)
+            li.classList.add("add")
+            let bx2 = document.createElement("div")
+            li.appendChild(bx2)
+            bx2.innerHTML = input1.value
+            bx2.classList.add("add1")
+            let bx3 = document.createElement("div")
+            li.appendChild(bx3)
+            let leftvaluep = parseInt(input2.value)
+            bx3.innerHTML = leftvaluep
+            console.log(leftvaluep, typeof leftvaluep);
+            bx3.classList.add("add2")
+            input1.value = ""
+            input2.value = ""
+            let leftvalue = left.innerHTML - leftvaluep
+            console.log(leftvalue, "Left Value");
+            left.innerHTML = leftvalue
+            if (leftvalue <= 0) {
+                text1.innerHTML = "You have used up entire budget for the week"
+                 input1.disabled = true
+                 input2.disabled = true
+            }
+        })
+
+
+    </script>
+
+</body>
+
+</html>
